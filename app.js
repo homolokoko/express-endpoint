@@ -5,6 +5,9 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 
 const userRouter = require('./router/user-router')
+const employeeRouter = require('./router/employee-routing')
+const departmentRouter = require('./router/department-routing')
+const sharedRouter = require('./router/shared-routing')
 
 // CORS options
 const corsOptions = {
@@ -25,7 +28,11 @@ app.use(cors(corsOptions))
 
 app.use('/api/user', cors(), userRouter)
 
+app.use('/api/employee', cors(), employeeRouter)
+
+app.use('/api/department', cors(), departmentRouter)
+
+app.use('/api/shared', cors(), sharedRouter)
 
 
-
-app.listen(3000, () => { console.log('server started') })
+app.listen(8000, () => { console.log('server started') })

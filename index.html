@@ -1,76 +1,234 @@
-<!-- Gallery  -->
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
 <style>
+    * {
+        font-family: arial;
+    }
+
     .main {
-        width: 100vw;
+        width: 100%;
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+    }
+
+    .content {
+        padding: 2rem;
+        border: 2px solid gray;
+        border-radius: 15px;
+    }
+
+    .formGroup {
+        gap: 2rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .formField {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        row-gap: 4px;
+    }
 
+    .form-label {
+        color: grey;
+        font-weight: 600;
+        letter-spacing: 1px;
+        font-size: small;
+    }
+
+    .form-input {
+        padding: 5px;
+        outline: none;
+        border: none;
+        padding: 1rem;
+        border-bottom: 1px solid rgba(215, 211, 211, 0.6);
+    }
+
+    .form-input:hover {
+        border-bottom: 2px solid blueviolet;
+        transition: all 750ms;
+    }
+
+    .submit {
+        padding: 1rem;
+        display: flex;
+        justify-content: end;
+
+        .btn-submit {
+            padding: 0.5rem 1rem 0.5rem 1rem;
+            background-color: rgb(58, 164, 129);
+            color: white;
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-size: small;
+            border: none;
+            border-radius: 15px;
+
+        }
+    }
+
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td,
+    th {
+        border: 1px solid rgba(128, 128, 128, 0.605);
+        text-align: left;
+        padding: 8px;
+        font-size: small;
+        color: rgb(73, 71, 71);
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    .btn-remove {
+        border: none;
+        background-color: rgb(207, 106, 106);
+        color: rgb(151, 24, 24);
+        border-radius: 5px;
+        padding: 4px 7px 4px 7px;
     }
 </style>
-
-</html>
 
 <body>
 
     <div class="main">
-        <div class="special-offer">
-            <h1>SPECIAL OFFER</h1>
-            <div class="gallery">
-                <a href="#" target="_blank">
-                    <img src="speaker JBL.jfif" alt="speaker photo" width="600" height="400">
-                </a>
-                <div class="desc">
-                    Brand: JBL <br> Price: $80
+        <div class="content">
+            <h4>Registration Form</h4>
+            <div class="formGroup">
+                <div class="formField">
+                    <label class="form-label" for="first-name">First Name</label>
+                    <input class="form-input first-name" id="first-name" type="text" placeholder="Type here .....">
+                </div>
+
+                <div class="formField">
+                    <label class="form-label" for="last-name">Last Name</label>
+                    <input class="form-input last-name" id="last-name" type="text" placeholder="Type here .....">
+                </div>
+
+                <div class="formField">
+                    <label class="form-label" for="gender">Gender</label>
+                    <div>
+                        <div onchange="dataTable.switchGender('Male')">
+                            <input type="radio" name="gender" id="gender.m">
+                            <label class="form-label" for="gender.m">Male</label>
+                        </div>
+
+                        <div onchange="dataTable.switchGender('Female')">
+                            <input type="radio" name="gender" id="gender.f">
+                            <label class="form-label" for="gender.f">Female</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formField">
+                    <label class="form-label" for="phone-number">Phone number</label>
+                    <input class="form-input phone-number" id="phone-number" type="text" placeholder="Type here .....">
+                </div>
+                <div class="formField">
+                    <label class="form-label" for="email">Email Address</label>
+                    <input class="form-input email" id="email" type="email" placeholder="Type here .....">
                 </div>
             </div>
-            <div class="gallery">
-                <a href="#" target="_blank">
-                    <img src="Iphone.jfif" alt="15 promax" width="600" height="400">
-                </a>
-                <div class="desc">
-                    Brand: 15 Pro Max <br> Price: $450
-                </div>
-            </div>
-            <div class="gallery">
-                <a href="#" target="_blank">
-                    <img src="galaxy 24 ultra.jfif" alt="15 promax" width="600" height="400">
-                </a>
-                <div class="desc">
-                    Brand: Galaxy 23 ultra <br> Price: $620
-                </div>
+            <div class="submit">
+                <button class="btn-submit" onclick="dataTable.submit()">SUBMIT</button>
             </div>
         </div>
-        <div class="new-arrival">
-            <h1>NEW ARRIVAL</h1><br>
-            <div class="gallery">
-                <a href="#" target="_blank">
-                    <img src="new1.jfif" alt="speaker photo" width="600" height="400">
-                </a>
-                <div class="desc">
-                    Brand: Iphone <br> Price: $700
-                </div>
-            </div>
-            <div class="gallery">
-                <a href="#" target="_blank">
-                    <img src="new2.jfif" alt="15 promax" width="600" height="400">
-                </a>
-                <div class="desc">
-                    Brand: Iphone <br> Price: $900
-                </div>
-            </div>
-            <div class="gallery">
-                <a href="#" target="_blank">
-                    <img src="new3.jfif" alt="15 promax" width="600" height="400">
-                </a>
-                <div class="desc">
-                    Brand: Iphone <br> Price: $555
-                </div>
-            </div>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">No. </th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">Phone number</th>
+                        <th scope="col">Email Address</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                </tbody>
+            </table>
         </div>
     </div>
+
 </body>
+<script>
+    tbody = document.querySelector("#tbody")
+    first_name = document.querySelector(".first-name")
+    last_name = document.querySelector(".last-name")
+    phone_number = document.querySelector(".phone-number")
+    email = document.querySelector(".email")
+
+    class DataTable {
+
+        list = []
+        gender = ''
+
+        switchGender(val) { this.gender = val }
+
+        submit() {
+            let item = {}
+            item.id = ++this.id
+            item.first_name = first_name.value
+            item.last_name = last_name.value
+            item.gender = this.gender
+            item.phone_number = phone_number.value
+            item.email = email.value
+            this.list.push(item)
+            console.log('list', this.list)
+            this.listDataRows()
+            this.resetForm()
+        }
+
+        remove(itemId) {
+            let arr = this.list
+            const index = arr.findIndex(element => element.id === itemId)
+
+            if (index !== -1) { arr.splice(index, 1) }
+
+            this.list = arr
+            this.listDataRows()
+        }
+
+        resetForm() {
+            first_name.value = ''
+            last_name.value = ''
+            phone_number.value = ''
+            email.value = ''
+        }
+
+        listDataRows() {
+            var id = 0
+            tbody.innerHTML = ''
+            this.list.forEach(item => {
+                tbody.innerHTML += `<tr>
+                    <th>#${item.id = ++id}</th>
+                    <td>${item.first_name}</td>
+                    <td>${item.last_name}</td>
+                    <td>${item.gender}</td>
+                    <td>${item.phone_number}</td>
+                    <td>${item.email}</td>
+                    <td><button class="btn-remove" onclick="dataTable.remove(${item.id})">REMOVE</button></td>
+                </tr>`
+            })
+        }
+    }
+
+    let dataTable = new DataTable()
+</script>
 
 </html>
