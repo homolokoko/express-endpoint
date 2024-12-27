@@ -8,6 +8,7 @@ const userRouter = require('./router/user-router')
 const employeeRouter = require('./router/employee-routing')
 const departmentRouter = require('./router/department-routing')
 const sharedRouter = require('./router/shared-routing')
+const ownerRouter = require('./router/owner-routing')
 
 // CORS options
 const corsOptions = {
@@ -33,6 +34,8 @@ app.use('/api/employee', cors(), employeeRouter)
 app.use('/api/department', cors(), departmentRouter)
 
 app.use('/api/shared', cors(), sharedRouter)
+
+app.use('/api/owner', cors(), ownerRouter)
 
 
 app.listen(8000, () => { console.log('server started') })
