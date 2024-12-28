@@ -2,5 +2,6 @@
     "conventionalCommits.scopes": [
         "Employee",
         "Owner"
-    ]
+    ],
+    "conventionalCommits.lineBreak": "\\n"
 }
