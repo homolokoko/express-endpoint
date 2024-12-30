@@ -11,6 +11,7 @@ const sharedRouter = require('./router/shared-routing')
 const ownerRouter = require('./router/owner-routing')
 const motorcycleRouter = require('./router/motorcycle-routing')
 const countryRouter = require('./router/country')
+const companyRouter = require('./router/company')
 
 // CORS options
 const corsOptions = {
@@ -49,6 +50,8 @@ app.use('/api/shared', cors(), sharedRouter)
 app.use('/api/owner', cors(), ownerRouter)
 
 app.use('/api/country', cors(), countryRouter)
+
+app.use('/api/company', cors(), companyRouter)
 
 app.use('/api/motorcycle', cors(), motorcycleRouter)
 
