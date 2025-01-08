@@ -5,6 +5,8 @@ const MotorbikeModel = require('./model')
 const migration = mongoose.Schema({
     use: { type: String, require: true },
     engine: { type: String, require: true },
+    release_year: { type: String, require: true },
+    release_price: { type: String, require: true },
     features: { type: String, require: true },
     model: { type: mongoose.Schema.Types.ObjectId, ref: MotorbikeModel },
     deleted: { type: Boolean, default: false }

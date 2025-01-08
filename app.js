@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const cors = require('cors')
+const path = require('path')
 
 const userRouter = require('./router/user-router')
 const employeeRouter = require('./router/employee-routing')
@@ -15,7 +16,7 @@ const companyRouter = require('./router/company')
 
 // CORS options
 const corsOptions = {
-    origin: 'http://localhost:4300', // Replace with your frontend URL
+    origin: process.env.CORS_ORIGIN, // Replace with your frontend URL
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allowed methods
     credentials: true, // Allow credentials (cookies, authorization headers, etc.)
     optionsSuccessStatus: 200
@@ -33,8 +34,8 @@ db.once('open', () => { console.log('Connection to Database') })
 // ------------------------------------- resource endpoint configuration ----------------
 app.use(express.json())
 app.use(cors(corsOptions))
-
-
+app.use(express.static('public'))
+app.use('/static', express.static(path.join(__dirname, 'public')))
 
 
 
@@ -59,4 +60,4 @@ app.use('/api/motorcycle', cors(), motorcycleRouter)
 
 
 // -----------------------------------  server hosting ----------------------------------
-app.listen(8000, () => { console.log('server started') })
+app.listen(process.env.PORT, () => { console.log('server started') })

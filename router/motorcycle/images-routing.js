@@ -30,14 +30,8 @@ router.get('/image', async (req, res, next) => {
     res.status(200).json(result);
 })
 
-router.post('/upload', async (req, res, next) => {
-    if (req.is('multipart/form-data')) {
-        res.json({ message: req.body.files });
-    }
-    next();
-})
-
 router.post('/', async (req, res, next) => {
+    return res.json(req.body)
     try {
         await MotorbikeDetail.create({
             use: req.body.use,
