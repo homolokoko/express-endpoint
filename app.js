@@ -13,6 +13,7 @@ const ownerRouter = require('./router/owner-routing')
 const motorcycleRouter = require('./router/motorcycle-routing')
 const countryRouter = require('./router/country')
 const companyRouter = require('./router/company')
+const RestCountry = require('./router/rest_country-routing')
 
 // CORS options
 const corsOptions = {
@@ -56,8 +57,8 @@ app.use('/api/company', cors(), companyRouter)
 
 app.use('/api/motorcycle', cors(), motorcycleRouter)
 
-
+app.use('/api/rest-country', cors(), RestCountry)
 
 
 // -----------------------------------  server hosting ----------------------------------
-app.listen(process.env.PORT, () => { console.log('server started') })
+app.listen(process.env.PORT, () => { console.log(`server start on port ${process.env.PORT}`) })
